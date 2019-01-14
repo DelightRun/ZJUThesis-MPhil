@@ -1,0 +1,166 @@
+\documentclass[oneside]{ZJUthesis}
+% 该文档中首字符为“%”的均为注释行，不会在论文中出现
+
+% 论文默认为单面模式，需单面模式请将第一行换为如下所示：
+% \documentclass[twoside]{ZJUthesis}
+
+% 取消目录中链接的颜色，方便打印
+% 如需颜色，请将“false”改为“true”
+\hypersetup{colorlinks=true}
+
+% MAC 系统下需要添加这两行
+\newcommand*{\lishu}{\CJKfamily{zhli}}    % 隶书
+\newcommand*{\youyuan}{\CJKfamily{zhyou}} % 幼圆
+
+% 这里几行代码使得目录中的“第几章” 和后面的章节名称不致发生重叠
+\makeatletter
+\renewcommand{\numberline}[1]{%
+\settowidth\@tempdimb{#1\hspace{0.5em}}%
+\ifdim\@tempdima<\@tempdimb%
+  \@tempdima=\@tempdimb%
+\fi%
+\hb@xt@\@tempdima{\@cftbsnum #1\@cftasnum\hfil}\@cftasnumb}
+\makeatother
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 正文字体设定
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\songti
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 论文封面部分
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 中文封面内容
+
+% 中图分类号
+\classification{}
+
+% 单位代码
+\serialnumber{10335}
+
+% 密级，如需密级则将其前“%”去掉
+%\SecretLevel{绝密}
+
+% 学号
+\PersonalID{}
+
+\title{}
+% 如果标题一行写不下，就写成两行，在下面的命令里写第二行，不需要两行则注释掉
+\titletl{}
+
+%英文题目
+\Etitle{}
+% 如果一行写不下，同中文题目设定，一行写不下则写两行，不需要就注释掉
+\Etitletl{}
+% \Etitletll{}
+
+% 作者
+\author{}
+\Eauthor{}
+
+\degree{硕士}
+\Edegree{Master}
+
+% 导师
+\supervisor{}
+\Esupervisor{}
+
+% 合作导师，如果有的话，去掉注释，
+% \cpsupervisor{张三丰真人}
+% \Ecpsupervisor{Truman Sanfeng Zhang}
+
+% 专业名称
+\major{计算机科学与技术}
+\Emajor{Computer Science and Technology}
+
+% 研究方向
+\researchdm{}
+\Eresearchdm{}
+
+% 所属学院
+\institute{计算机科学与技术学院}
+\Einstitute{College of Computer Science}
+\Einstitutel{and Technology}
+
+%论文提交日期
+\submitdate{二〇一八年十二月十日}
+\Esubmitdate{2018-12-10}
+
+% 答辨日期
+%\defenddate{2011年11月1日}
+
+% 生成封面
+\makeCoverPage
+
+% 生成英文封面
+\makeECoverPage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 原创声明与版权协议页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 生成原创声明与版权协议页
+\makeOSandCPRTpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 论文部分开始
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUfrontmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 摘要
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./chapters/abstractC}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 英文摘要
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./chapters/abstractE}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 目录页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 插图列表
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUListofFigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 表格列表
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUListofTables
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 正文内容部分开始
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUmainmatter
+
+\input{./chapters/chap1}
+
+\input{./chapters/chap2}
+
+
+\ZJUbackmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 参考文献
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ZJUthesisbib{thesisbib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 发表论文目录
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./chapters/publications}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 致谢页
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./chapters/thanks}
+
+
+\end{document}
